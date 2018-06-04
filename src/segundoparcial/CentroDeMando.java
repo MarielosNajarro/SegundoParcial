@@ -11,15 +11,17 @@ package segundoparcial;
  */
 public class CentroDeMando {
 //Creando los metodos de la clase Centro de Mando
-
+    
     private int r_energia_maxima = 10000;
     private int r_hierro_maxima = 5000;
     private int r_agua_maxima = 3000;
     private int r_energia_actual = r_energia_maxima;
     private int r_hierro_actual = r_hierro_maxima;
     private int r_agua_actual = r_agua_maxima;
-    private String nombre_centro;
+    private final String nombre_centro;
     private int nivel = 0;
+    private int vida_maxima = 20000;
+    private int vida_actual = vida_maxima;
 
 //Creando el contructor de la clase centro de mando
     public CentroDeMando(String nombre_centro) {
@@ -30,10 +32,23 @@ public class CentroDeMando {
     public void mostrarRecursos() {
         System.out.println("Centro de mando: " + nombre_centro);
         System.out.println("\tNivel: " + nivel);
+        System.out.println("\tVida: " + vida_actual + "/" + vida_maxima);
         System.out.println("\tEnergia: " + r_energia_actual + "/" + r_energia_maxima);
         System.out.println("\tHierro: " + r_hierro_actual + "/" + r_hierro_maxima);
         System.out.println("\tAgua : " + r_agua_actual + "/" + r_agua_maxima);
     }
+    
+//Creando el metodo de reducir vida 
+    public void reducirVida(int cant){
+        if(vida_actual >= cant){
+            vida_actual -= cant;
+        }
+        else{
+            System.out.println("El centro de mando "+ nombre_centro + " ha caido");
+            vida_actual =0;
+        }
+    }
+   
 //Creando el metodo gastar energia
 
     public void gastarEnergia(int cant) {

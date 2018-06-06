@@ -10,14 +10,10 @@ package segundoparcial;
  * @author marielos
  */
 public class CentroDeMando {
-//Creando los metodos de la clase Centro de Mando
-    
-    private int r_energia_maxima = 10000;
-    private int r_hierro_maxima = 5000;
-    private int r_agua_maxima = 3000;
-    private int r_energia_actual = r_energia_maxima;
-    private int r_hierro_actual = r_hierro_maxima;
-    private int r_agua_actual = r_agua_maxima;
+//Los atributos de la clase centro de mando
+    private Recurso recurso_a;
+    private Recurso recurso_b;
+    private Recurso recurso_c;
     private final String nombre_centro;
     private int nivel = 0;
     private int vida_maxima = 20000;
@@ -33,80 +29,17 @@ public class CentroDeMando {
         System.out.println("Centro de mando: " + nombre_centro);
         System.out.println("\tNivel: " + nivel);
         System.out.println("\tVida: " + vida_actual + "/" + vida_maxima);
-        System.out.println("\tEnergia: " + r_energia_actual + "/" + r_energia_maxima);
-        System.out.println("\tHierro: " + r_hierro_actual + "/" + r_hierro_maxima);
-        System.out.println("\tAgua : " + r_agua_actual + "/" + r_agua_maxima);
     }
-    
+
 //Creando el metodo de reducir vida 
-    public void reducirVida(int cant){
-        if(vida_actual >= cant){
+    public void reducirVida(int cant) {
+        if (vida_actual >= cant) {
             vida_actual -= cant;
-        }
-        else{
-            System.out.println("El centro de mando "+ nombre_centro + " ha caido");
-            vida_actual =0;
-        }
-    }
-   
-//Creando el metodo gastar energia
-
-    public void gastarEnergia(int cant) {
-        if (cant <= r_energia_actual) {
-            r_energia_actual -= cant;
         } else {
-            System.out.println("Error: Energia insuficiente");
+            System.out.println("El centro de mando " + nombre_centro + " ha caido");
+            vida_actual = 0;
         }
     }
-//Creando el metodo gastar hierro
-
-    public void gastarHierro(int cant) {
-        if (cant <= r_hierro_actual) {
-            r_hierro_actual -= cant;
-        } else {
-            System.out.println("Error: Hierro insuficiente");
-        }
-    }
-//Creando el metodo gastar agua
-
-    public void gastarAgua(int cant) {
-        if (cant <= r_agua_actual) {
-            r_agua_actual -= cant;
-        } else {
-            System.out.println("Error: Agua insuficiente");
-        }
-    }
-
-//Crenado el metodo recolectar energia 
-    public void recolectarEnergia(int cant) {
-        if ((r_energia_actual + cant) <= r_energia_maxima) {
-            r_energia_actual += cant;
-        } else {
-            System.out.println("Recurso Energia maxima alcanzada");
-            r_energia_actual = r_energia_maxima;
-        }
-    }
-//Creando el metodo recolectar hierro
-
-    public void recolectarHierro(int cant) {
-        if ((r_hierro_actual + cant) <= r_hierro_maxima) {
-            r_hierro_actual += cant;
-        } else {
-            System.out.println("Recurso Hierro maximo alcanzado");
-            r_hierro_actual = r_hierro_maxima;
-        }
-    }
-//Creando el metodo recolecta agua
-
-    public void recolectarAgua(int cant) {
-        if ((r_agua_actual + cant) <= r_agua_maxima) {
-            r_agua_actual += cant;
-        } else {
-            System.out.println("Recurso Agua maxima alcanzada");
-            r_agua_actual = r_agua_maxima;
-        }
-    }
-
 //Creando el metodo de subir de nivel
     public void subirDeNivel() {
         int gasto;
@@ -114,15 +47,15 @@ public class CentroDeMando {
             nivel++;
             switch (nivel) {
                 case 1:
-                    gasto = (int) (0.25 * 1.10 * (r_energia_maxima + r_hierro_maxima + r_agua_maxima) / 3);
-                    if (r_energia_actual >= gasto && r_hierro_actual >= gasto && r_agua_actual >= gasto) {
-                        r_energia_actual -= gasto;
-                        r_hierro_actual -= gasto;
-                        r_agua_actual -= gasto;
+                    gasto = (int) (0.25 * 1.10 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
+                    if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
+                        recurso_a.gastar(gasto);
+                        recurso_b.gastar(gasto);
+                        recurso_c.gastar(gasto);
 
-                        r_energia_maxima *= 1.10;
-                        r_hierro_maxima *= 1.10;
-                        r_agua_maxima *= 1.10;
+                        recurso_a.setVal_maximo((int) (recurso_a.getVal_maximo() * 1.10));
+                        recurso_b.setVal_maximo((int) (recurso_b.getVal_maximo() * 1.10));
+                        recurso_c.setVal_maximo((int) (recurso_c.getVal_maximo() * 1.10));
                     } else {
                         System.out.println("Error: Recursos insuficientes se necesita " + gasto + " por recurso");
                         nivel--;
@@ -130,30 +63,30 @@ public class CentroDeMando {
                     break;
 
                 case 2:
-                    gasto = (int) (0.25 * 1.30 * (r_energia_maxima + r_hierro_maxima + r_agua_maxima) / 3);
-                    if (r_energia_actual >= gasto && r_hierro_actual >= gasto && r_agua_actual >= gasto) {
-                        r_energia_actual -= gasto;
-                        r_hierro_actual -= gasto;
-                        r_agua_actual -= gasto;
+                    gasto = (int) (0.25 * 1.30 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
+                    if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
+                        recurso_a.gastar(gasto);
+                        recurso_b.gastar(gasto);
+                        recurso_c.gastar(gasto);
 
-                        r_energia_maxima *= 1.30;
-                        r_hierro_maxima *= 1.30;
-                        r_agua_maxima *= 1.30;
+                        recurso_a.setVal_maximo((int) (recurso_a.getVal_maximo() * 1.30));
+                        recurso_b.setVal_maximo((int) (recurso_b.getVal_maximo() * 1.30));
+                        recurso_c.setVal_maximo((int) (recurso_c.getVal_maximo() * 1.30));
                     } else {
                         System.out.println("Error: Recursos insuficientes se necesita " + gasto + " por recurso");
                         nivel--;
                     }
                     break;
                 case 3:
-                    gasto = (int) (0.25 * 1.50 * (r_energia_maxima + r_hierro_maxima + r_agua_maxima) / 3);
-                    if (r_energia_actual >= gasto && r_hierro_actual >= gasto && r_agua_actual >= gasto) {
-                        r_energia_actual -= gasto;
-                        r_hierro_actual -= gasto;
-                        r_agua_actual -= gasto;
+                    gasto = (int) (0.25 * 1.50 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
+                    if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
+                        recurso_a.gastar(gasto);
+                        recurso_b.gastar(gasto);
+                        recurso_c.gastar(gasto);
 
-                        r_energia_maxima *= 1.50;
-                        r_hierro_maxima *= 1.50;
-                        r_agua_maxima *= 1.50;
+                        recurso_a.setVal_maximo((int) (recurso_a.getVal_maximo() * 1.50));
+                        recurso_b.setVal_maximo((int) (recurso_b.getVal_maximo() * 1.50));
+                        recurso_c.setVal_maximo((int) (recurso_c.getVal_maximo() * 1.50));
                     } else {
                         System.out.println("Error: Recursos insuficientes se necesita " + gasto + " por recurso");
                         nivel--;
@@ -164,4 +97,55 @@ public class CentroDeMando {
             System.out.println("Error: Nivel maximo de " + nombre_centro + " alcanzado");
         }
     }
+//Get y set 
+    public Recurso getRecurso_a() {
+        return recurso_a;
+    }
+
+    public void setRecurso_a(Recurso recurso_a) {
+        this.recurso_a = recurso_a;
+    }
+
+    public Recurso getRecurso_b() {
+        return recurso_b;
+    }
+
+    public void setRecurso_b(Recurso recurso_b) {
+        this.recurso_b = recurso_b;
+    }
+
+    public Recurso getRecurso_c() {
+        return recurso_c;
+    }
+
+    public void setRecurso_c(Recurso recurso_c) {
+        this.recurso_c = recurso_c;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getVida_maxima() {
+        return vida_maxima;
+    }
+
+    public void setVida_maxima(int vida_maxima) {
+        this.vida_maxima = vida_maxima;
+    }
+
+    public int getVida_actual() {
+        return vida_actual;
+    }
+
+    public void setVida_actual(int vida_actual) {
+        this.vida_actual = vida_actual;
+    }
+    
 }
+
+  

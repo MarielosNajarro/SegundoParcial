@@ -16,30 +16,22 @@ public class CentroDeMando {
     private Recurso recurso_c;
     private final String nombre_centro;
     private int nivel = 0;
-    private int vida_maxima = 20000;
-    private int vida_actual = vida_maxima;
+    private Vida vida;
 
 //Creando el contructor de la clase centro de mando
-    public CentroDeMando(String nombre_centro) {
+    public CentroDeMando(String nombre_centro, int vida_maxima) {
         this.nombre_centro = nombre_centro;
+        vida = new Vida(vida_maxima, nombre_centro);
     }
 
 //Creando el metodo mostrar recursos del centro de mando
     public void mostrarRecursos() {
         System.out.println("Centro de mando: " + nombre_centro);
         System.out.println("\tNivel: " + nivel);
-        System.out.println("\tVida: " + vida_actual + "/" + vida_maxima);
+        System.out.println("\tVida: " + vida.getActual() + "/" + vida.getMaxima());
     }
 
-//Creando el metodo de reducir vida 
-    public void reducirVida(int cant) {
-        if (vida_actual >= cant) {
-            vida_actual -= cant;
-        } else {
-            System.out.println("El centro de mando " + nombre_centro + " ha caido");
-            vida_actual = 0;
-        }
-    }
+
 //Creando el metodo de subir de nivel
     public void subirDeNivel() {
         int gasto;
@@ -130,20 +122,8 @@ public class CentroDeMando {
         this.nivel = nivel;
     }
 
-    public int getVida_maxima() {
-        return vida_maxima;
-    }
-
-    public void setVida_maxima(int vida_maxima) {
-        this.vida_maxima = vida_maxima;
-    }
-
-    public int getVida_actual() {
-        return vida_actual;
-    }
-
-    public void setVida_actual(int vida_actual) {
-        this.vida_actual = vida_actual;
+    public Vida getVida(){
+        return this.vida;
     }
     
 }

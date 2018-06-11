@@ -15,7 +15,7 @@ public class SegundoParcial {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Raza alianza = new Raza("Alianza", "Cuartel");
+        Raza alianza = new Raza("Alianza", "Cuartel", 200000);
         alianza.asignar_recurso_a("Hielo", 1000);
         alianza.asignar_recurso_b("Fuego", 3000);
         alianza.asignar_recurso_c("Agua", 4000);
@@ -25,7 +25,7 @@ public class SegundoParcial {
         
         alianza.mostrarInformacion();
         
-        Raza horda = new Raza("Horda", "Palacio");
+        Raza horda = new Raza("Horda", "Palacio", 30000);
         horda.asignar_recurso_a("Tierra", 1000);
         horda.asignar_recurso_b("Energia", 1000);
         horda.asignar_recurso_c("Poder", 1000);

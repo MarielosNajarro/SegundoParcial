@@ -11,7 +11,7 @@ package segundoparcial;
  */
 public class CentroDeMando {
 //Los atributos de la clase centro de mando
-
+    
     private Recurso recurso_a;
     private Recurso recurso_b;
     private Recurso recurso_c;

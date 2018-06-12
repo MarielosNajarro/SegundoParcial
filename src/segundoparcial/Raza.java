@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Raza {
 //Atributos de la clase
-
+    
     private String nombre_raza;
     private CentroDeMando mando;
     private ArrayList<MiembroMilicia> miembros = new ArrayList();
@@ -67,4 +67,5 @@ public class Raza {
     public void setMando(CentroDeMando mando) {
         this.mando = mando;
     }
+
 }

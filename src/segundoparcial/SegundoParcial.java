@@ -83,24 +83,24 @@ public class SegundoParcial {
                     }
                     break;
                 case 4:
-                    System.out.println("1) "+jugador1.getMando().getRecurso_a().getNombre_recurso());
-                    System.out.println("2) "+jugador1.getMando().getRecurso_b().getNombre_recurso());
-                    System.out.println("3) "+jugador1.getMando().getRecurso_c().getNombre_recurso());
+                    System.out.println("1) " + jugador1.getMando().getRecurso_a().getNombre_recurso() + " (100)");
+                    System.out.println("2) " + jugador1.getMando().getRecurso_b().getNombre_recurso() + " (130)");
+                    System.out.println("3) " + jugador1.getMando().getRecurso_c().getNombre_recurso() + " (150)");
                     System.out.print("\nDigite opcion: ");
                     opcion = leer.nextInt();
-                    switch(opcion){
+                    switch (opcion) {
                         case 1:
-                            jugador1.getMando().getRecurso_a().recolectar(1000);
+                            jugador1.getMando().getRecurso_a().recolectar(100);
                             break;
                         case 2:
-                            jugador1.getMando().getRecurso_b().recolectar(1300);
+                            jugador1.getMando().getRecurso_b().recolectar(130);
                             break;
                         case 3:
-                            jugador1.getMando().getRecurso_c().recolectar(1500);
+                            jugador1.getMando().getRecurso_c().recolectar(150);
                             break;
                     }
                     break;
-                case 5: 
+                case 5:
                     jugador1.getMando().subirDeNivel();
                     break;
             }
@@ -145,5 +145,5 @@ public class SegundoParcial {
 
     public static void separador() {
         System.out.println("-------------------------------------------------");
-    }   
+    }
 }

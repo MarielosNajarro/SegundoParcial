@@ -21,6 +21,10 @@ public class MiembroMilicia {
         this.ataque = ataque;
     }
 
+    public void mostrarInformacion() {
+        System.out.print("Miembro: " + nombre_miembro + " ");
+    }
+
     public String getNombre_miembro() {
         return nombre_miembro;
     }
@@ -44,4 +48,5 @@ public class MiembroMilicia {
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
+
 }

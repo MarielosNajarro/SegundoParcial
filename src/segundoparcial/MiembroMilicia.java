@@ -10,13 +10,15 @@ package segundoparcial;
  * @author MARIELOS
  */
 public class MiembroMilicia {
+
     private String nombre_miembro;
     private Vida vida;
     private int ataque;
 
-    public MiembroMilicia(String nombre_miembro, Vida vida) {
+    public MiembroMilicia(String nombre_miembro, Vida vida, int ataque) {
         this.nombre_miembro = nombre_miembro;
         this.vida = vida;
+        this.ataque = ataque;
     }
 
     public String getNombre_miembro() {
@@ -42,8 +44,4 @@ public class MiembroMilicia {
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-
-    
-    
-    
 }

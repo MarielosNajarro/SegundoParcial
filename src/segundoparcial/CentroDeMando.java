@@ -11,6 +11,7 @@ package segundoparcial;
  */
 public class CentroDeMando {
 //Los atributos de la clase centro de mando
+
     private Recurso recurso_a;
     private Recurso recurso_b;
     private Recurso recurso_c;
@@ -29,8 +30,10 @@ public class CentroDeMando {
         System.out.println("Centro de mando: " + nombre_centro);
         System.out.println("\tNivel: " + nivel);
         System.out.println("\tVida: " + vida.getActual() + "/" + vida.getMaxima());
+        recurso_a.mostrarRecurso();
+        recurso_b.mostrarRecurso();
+        recurso_c.mostrarRecurso();
     }
-
 
 //Creando el metodo de subir de nivel
     public void subirDeNivel() {
@@ -90,6 +93,7 @@ public class CentroDeMando {
         }
     }
 //Get y set 
+
     public Recurso getRecurso_a() {
         return recurso_a;
     }
@@ -122,10 +126,8 @@ public class CentroDeMando {
         this.nivel = nivel;
     }
 
-    public Vida getVida(){
+    public Vida getVida() {
         return this.vida;
     }
-    
-}
 
-  
+}

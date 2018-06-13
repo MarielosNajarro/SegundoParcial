@@ -32,6 +32,7 @@ public class SegundoParcial {
         separador();
 
         do {
+            //JUGADOR 1
             separador();
             System.out.println("JUGADOR 1");
             jugador1.mostrarInformacion();
@@ -82,6 +83,46 @@ public class SegundoParcial {
                             break;
                     }
                     break;
+
+                case 3:
+                    //Escogiendo con quien voy a atacar
+                    System.out.println("1) Atacar con un Miembro");
+                    System.out.println("2) Atacar con un Vehiculo");
+                    System.out.print("\nDigite opcion: ");
+                    opcion = leer.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            if (jugador1.getMiembros().size() > 0) {
+                                System.out.println("Con que miembro quieres atacar");
+                                for (int i = 0; i < jugador1.getMiembros().size(); i++) {
+                                    System.out.print("\t" + (i + 1) + ") ");
+                                    jugador1.getMiembros().get(i).mostrarInformacion();
+                                }
+                                System.out.print("\nDigite opcion: ");
+                                opcion = leer.nextInt();
+                                jugador2.recibirDano(jugador1.getMiembros().get(opcion - 1).getAtaque());
+                            } else {
+                                System.out.println("No tienes miembros disponibles parar atacar");
+                            }
+
+                            break;
+                        case 2:
+                            if (jugador1.getVehiculos().size() > 0) {
+                                System.out.println("Con que vehiculo quieres atacar");
+                                for (int i = 0; i < jugador1.getVehiculos().size(); i++) {
+                                    System.out.print("\t" + (i + 1) + ") ");
+                                    jugador1.getVehiculos().get(i).mostrarInformacion();
+                                }
+                                System.out.print("\nDigite opcion: ");
+                                opcion = leer.nextInt();
+                                jugador2.recibirDano(jugador1.getVehiculos().get(opcion - 1).getAtaque());
+                            } else {
+                                System.out.println("No tienes vehiculos disponibles para atacar");
+                            }
+
+                            break;
+                    }
+                    break;
                 case 4:
                     System.out.println("1) " + jugador1.getMando().getRecurso_a().getNombre_recurso() + " (100)");
                     System.out.println("2) " + jugador1.getMando().getRecurso_b().getNombre_recurso() + " (130)");
@@ -104,6 +145,121 @@ public class SegundoParcial {
                     jugador1.getMando().subirDeNivel();
                     break;
             }
+
+            //JUGADOR 2
+            separador();
+            System.out.println("JUGADOR 2");
+            jugador2.mostrarInformacion();
+            System.out.println("Jugador 2, que deseas hacer: ");
+            System.out.println("1) Generar unidad");
+            System.out.println("2) Generar vehiculo");
+            System.out.println("3) Atacar");
+            System.out.println("4) Recolectar");
+            System.out.println("5) Subir de nivel");
+            System.out.print("\nDigite opcion: ");
+            opcion = leer.nextInt();
+            switch (opcion) {
+                case 1:
+                    separador();
+                    System.out.println("1) Generar Milicia");
+                    System.out.println("2) Generar Especialista");
+                    System.out.print("\nDigite opcion: ");
+                    opcion = leer.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            jugador2.agregarMiembroMilicia(new MiembroMilicia("Milicia " + jugador2.getNombre_raza(), new Vida(2000, "Milicia " + jugador2.getNombre_raza()), 500));
+                            jugador2.getMando().getRecurso_a().gastar(350);
+                            jugador2.getMando().getRecurso_c().gastar(250);
+                            break;
+                        case 2:
+                            jugador2.agregarMiembroMilicia(new MiembroMilicia("Especialista " + jugador2.getNombre_raza(), new Vida(3000, "Especialista " + jugador2.getNombre_raza()), 200));
+                            jugador2.getMando().getRecurso_b().gastar(100);
+                            jugador2.getMando().getRecurso_c().gastar(400);
+                            break;
+                    }
+                    break;
+                case 2:
+                    separador();
+                    System.out.println("1) Generar Tanque");
+                    System.out.println("2) Generar Avion");
+                    System.out.print("\nDigite opcion: ");
+                    opcion = leer.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            jugador2.agregarVehiculo(new Vehiculo("Tanque " + jugador2.getNombre_raza(), new Vida(1700, "Tanque " + jugador2.getNombre_raza()), 550));
+                            jugador2.getMando().getRecurso_a().gastar(800);
+                            jugador2.getMando().getRecurso_b().gastar(100);
+                            break;
+                        case 2:
+                            jugador2.agregarVehiculo(new Vehiculo("Avion " + jugador2.getNombre_raza(), new Vida(1300, "Avion " + jugador2.getNombre_raza()), 1000));
+                            jugador2.getMando().getRecurso_a().gastar(500);
+                            jugador2.getMando().getRecurso_b().gastar(450);
+                            break;
+                    }
+                    break;
+
+                case 3:
+                    //Escogiendo con quien voy a atacar
+                    System.out.println("1) Atacar con un Miembro");
+                    System.out.println("2) Atacar con un Vehiculo");
+                    System.out.print("\nDigite opcion: ");
+                    opcion = leer.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            if (jugador2.getMiembros().size() > 0) {
+                                System.out.println("Con que miembro quieres atacar");
+                                for (int i = 0; i < jugador2.getMiembros().size(); i++) {
+                                    System.out.print("\t" + (i + 1) + ") ");
+                                    jugador2.getMiembros().get(i).mostrarInformacion();
+                                }
+                                System.out.print("\nDigite opcion: ");
+                                opcion = leer.nextInt();
+                                jugador1.recibirDano(jugador2.getMiembros().get(opcion - 1).getAtaque());
+                            } else {
+                                System.out.println("No tienes miebros disponibles para atacar");
+                            }
+
+                            break;
+                        case 2:
+                            if (jugador2.getVehiculos().size() > 0) {
+                                System.out.println("Con que vehiculo quieres atacar");
+                                for (int i = 0; i < jugador2.getVehiculos().size(); i++) {
+                                    System.out.print("\t" + (i + 1) + ") ");
+                                    jugador2.getVehiculos().get(i).mostrarInformacion();
+                                }
+                                System.out.print("\nDigite opcion: ");
+                                opcion = leer.nextInt();
+                                jugador1.recibirDano(jugador2.getVehiculos().get(opcion - 1).getAtaque());
+                            } else {
+                                System.out.println("No tienes vehiculos disponibles para atacar");
+                            }
+
+                            break;
+                    }
+                    break;
+                case 4:
+                    System.out.println("1) " + jugador2.getMando().getRecurso_a().getNombre_recurso() + " (200)");
+                    System.out.println("2) " + jugador2.getMando().getRecurso_b().getNombre_recurso() + " (260)");
+                    System.out.println("3) " + jugador2.getMando().getRecurso_c().getNombre_recurso() + " (300)");
+                    System.out.print("\nDigite opcion: ");
+                    opcion = leer.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            jugador2.getMando().getRecurso_a().recolectar(200);
+                            break;
+                        case 2:
+                            jugador2.getMando().getRecurso_b().recolectar(260);
+                            break;
+                        case 3:
+                            jugador2.getMando().getRecurso_c().recolectar(300);
+                            break;
+                    }
+                    break;
+                case 5:
+                    jugador2.getMando().subirDeNivel();
+                    break;
+            }
+
         } while (true);
 
     }
@@ -134,7 +290,7 @@ public class SegundoParcial {
                 case 3:
                     raza = new Raza("Horda", "Torre Industrial", 35000);
                     raza.asignar_recurso_a("Piedra", 7000);
-                    raza.asignar_recurso_b("Gasolina", 1000);
+                    raza.asignar_recurso_b("Gasolina", 4000);
                     raza.asignar_recurso_c("Aceite", 6500);
                     break;
             }
@@ -146,4 +302,5 @@ public class SegundoParcial {
     public static void separador() {
         System.out.println("-------------------------------------------------");
     }
+
 }

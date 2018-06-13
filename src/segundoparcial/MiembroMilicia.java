@@ -22,7 +22,7 @@ public class MiembroMilicia {
     }
 
     public void mostrarInformacion() {
-        System.out.print("Miembro: " + nombre_miembro + " ");
+        System.out.println("Miembro: " + nombre_miembro + " " + vida.getActual() + "/" + vida.getMaxima() + " Ataque: " + ataque);
     }
 
     public String getNombre_miembro() {

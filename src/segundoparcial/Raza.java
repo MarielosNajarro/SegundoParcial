@@ -6,6 +6,7 @@
 package segundoparcial;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Raza {
 //Atributos de la clase
-    
+
     private String nombre_raza;
     private CentroDeMando mando;
     private ArrayList<MiembroMilicia> miembros = new ArrayList();
@@ -29,6 +30,69 @@ public class Raza {
     public void mostrarInformacion() {
         System.out.println(nombre_raza.toUpperCase());
         mando.mostrarRecursos();
+        System.out.println("\tMIEMBROS: ");
+        for (int i = 0; i < miembros.size(); i++) {
+            System.out.print("\t\t" + (i + 1) + ") ");
+            miembros.get(i).mostrarInformacion();
+        }
+        System.out.println("\tVEHICULOS: ");
+        for (int i = 0; i < vehiculos.size(); i++) {
+            System.out.print("\t\t" + (i + 1) + ") ");
+            vehiculos.get(i).mostrarInformacion();
+        }
+    }
+
+    public void recibirDano(int ataque) {
+        int opcion;
+        Scanner leer = new Scanner(System.in);
+        System.out.println("A que quieres atacar?");
+        if (vehiculos.size() == 0 && miembros.size() == 0) {
+            System.out.println("1) Centro de mando");
+            mando.getVida().recibir_dano(ataque);
+        } else {
+            System.out.println("1) Atacar a la milicia");
+            System.out.println("2) Atacar a un vehiculo");
+            System.out.print("Digite opcion: ");
+            opcion = leer.nextInt();
+            switch (opcion) {
+                case 1:
+                    if (miembros.size() > 0) {
+                        System.out.println("A que miembro?");
+                        for (int i = 0; i < miembros.size(); i++) {
+                            System.out.print("\t" + (i + 1) + ") ");
+                            miembros.get(i).mostrarInformacion();
+                        }
+                        System.out.print("Digite opcion: ");
+                        opcion = leer.nextInt();
+                        miembros.get(opcion - 1).getVida().recibir_dano(ataque);
+                        if (miembros.get(opcion - 1).getVida().vida_actual == 0) {
+                            System.out.println("\t\t" + miembros.get(opcion - 1).getNombre_miembro() + " YA SE MURIO");
+                            miembros.remove(opcion - 1);
+                        }
+                    } else {
+                        System.out.println("No hay miembros disponibles");
+                    }
+                    break;
+                case 2:
+                    if (vehiculos.size() > 0) {
+                        System.out.println("A que vehiculo?");
+                        for (int i = 0; i < vehiculos.size(); i++) {
+                            System.out.print("\t" + (i + 1) + ") ");
+                            vehiculos.get(i).mostrarInformacion();
+                        }
+                        System.out.print("Digite opcion: ");
+                        opcion = leer.nextInt();
+                        vehiculos.get(opcion - 1).getVida().recibir_dano(ataque);
+                        if (vehiculos.get(opcion - 1).getVida().vida_actual == 0) {
+                            System.out.println("\t\t" + vehiculos.get(opcion - 1).getNombre_vehiculo() + " YA SE ARRUINO");
+                            vehiculos.remove(opcion - 1);
+                        }
+                    } else {
+                        System.out.println("No hay vehiculos disponibles");
+                    }
+                    break;
+            }
+        }
     }
 
     public void agregarMiembroMilicia(MiembroMilicia miembro) {
@@ -66,6 +130,22 @@ public class Raza {
 
     public void setMando(CentroDeMando mando) {
         this.mando = mando;
+    }
+
+    public ArrayList<MiembroMilicia> getMiembros() {
+        return miembros;
+    }
+
+    public void setMiembros(ArrayList<MiembroMilicia> miembros) {
+        this.miembros = miembros;
+    }
+
+    public ArrayList<Vehiculo> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
     }
 
 }

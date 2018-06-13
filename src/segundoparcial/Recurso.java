@@ -72,4 +72,5 @@ public class Recurso {
     public void setVal_actual(int val_actual) {
         this.val_actual = val_actual;
     }
+
 }

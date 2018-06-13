@@ -10,6 +10,7 @@ package segundoparcial;
  * @author MARIELOS
  */
 public class Vehiculo {
+
     private String nombre_vehiculo;
     private Vida vida;
     private int ataque;
@@ -18,6 +19,10 @@ public class Vehiculo {
         this.nombre_vehiculo = nombre_vehiculo;
         this.vida = vida;
         this.ataque = ataque;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println("Vehiculo: " + nombre_vehiculo + " " + vida.getActual() + "/" + vida.getMaxima() + " Ataque: " + ataque);
     }
 
     public String getNombre_vehiculo() {
@@ -43,6 +48,5 @@ public class Vehiculo {
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-    
-    
+
 }

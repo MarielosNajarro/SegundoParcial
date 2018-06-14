@@ -11,7 +11,7 @@ package segundoparcial;
  */
 public class CentroDeMando {
 //Los atributos de la clase centro de mando
-
+    //Recursos genericos
     private Recurso recurso_a;
     private Recurso recurso_b;
     private Recurso recurso_c;
@@ -42,7 +42,9 @@ public class CentroDeMando {
             nivel++;
             switch (nivel) {
                 case 1:
+                    //Calculando el gasto de recursos al subir de nivel 1
                     gasto = (int) (0.25 * 1.10 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
+                    //Verificando si hay recursos suficientes para subir de nivel
                     if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
                         recurso_a.gastar(gasto);
                         recurso_b.gastar(gasto);
@@ -52,13 +54,16 @@ public class CentroDeMando {
                         recurso_b.setVal_maximo((int) (recurso_b.getVal_maximo() * 1.10));
                         recurso_c.setVal_maximo((int) (recurso_c.getVal_maximo() * 1.10));
                     } else {
+                        //Si no hay recursos suficientes se muestra el mensaje y resta el nivel subido
                         System.out.println("Error: Recursos insuficientes se necesita " + gasto + " por recurso");
                         nivel--;
                     }
                     break;
 
                 case 2:
+                    //Calculando el gasto de recursos al subir de nivel 1
                     gasto = (int) (0.25 * 1.30 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
+                    //Verificando si hay recursos suficientes para subir de nivel
                     if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
                         recurso_a.gastar(gasto);
                         recurso_b.gastar(gasto);
@@ -68,12 +73,15 @@ public class CentroDeMando {
                         recurso_b.setVal_maximo((int) (recurso_b.getVal_maximo() * 1.30));
                         recurso_c.setVal_maximo((int) (recurso_c.getVal_maximo() * 1.30));
                     } else {
+                    //Si no hay recursos suficientes se muestra el mensaje y resta el nivel subido
                         System.out.println("Error: Recursos insuficientes se necesita " + gasto + " por recurso");
                         nivel--;
                     }
                     break;
                 case 3:
+                    //Calculando el gasto de recursos al subir de nivel 1
                     gasto = (int) (0.25 * 1.50 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
+                    //Verificando si hay recursos suficientes para subir de nivel
                     if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
                         recurso_a.gastar(gasto);
                         recurso_b.gastar(gasto);
@@ -83,6 +91,7 @@ public class CentroDeMando {
                         recurso_b.setVal_maximo((int) (recurso_b.getVal_maximo() * 1.50));
                         recurso_c.setVal_maximo((int) (recurso_c.getVal_maximo() * 1.50));
                     } else {
+                        //Si no hay recursos suficientes se muestra el mensaje y resta el nivel subido
                         System.out.println("Error: Recursos insuficientes se necesita " + gasto + " por recurso");
                         nivel--;
                     }

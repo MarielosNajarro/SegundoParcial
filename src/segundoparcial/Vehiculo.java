@@ -10,20 +10,24 @@ package segundoparcial;
  * @author MARIELOS
  */
 public class Vehiculo {
+//Los atributos de la clase vehiculo
 
     private String nombre_vehiculo;
     private Vida vida;
     private int ataque;
+//El constructor de la clase 
 
     public Vehiculo(String nombre_vehiculo, Vida vida, int ataque) {
         this.nombre_vehiculo = nombre_vehiculo;
         this.vida = vida;
         this.ataque = ataque;
     }
+//Metodo de mostrar informacion
 
     public void mostrarInformacion() {
         System.out.println("Vehiculo: " + nombre_vehiculo + " " + vida.getActual() + "/" + vida.getMaxima() + " Ataque: " + ataque);
     }
+//Get y set
 
     public String getNombre_vehiculo() {
         return nombre_vehiculo;

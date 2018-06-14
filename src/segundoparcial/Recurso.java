@@ -22,12 +22,15 @@ public class Recurso {
         this.val_maximo = valor;
         this.val_actual = valor;
     }
+//Metodo de mostrar recurso 
 
     public void mostrarRecurso() {
         System.out.println("\t\t" + nombre_recurso + ": " + val_actual + "/" + val_maximo);
     }
 //Metodo gastar recurso
-
+    
+    // Se hace el gasto del recurso, si la cantidad del gasto excede al valor actual
+    // Se iguala el recurso actual 0
     public void gastar(int cant) {
         if (val_actual >= cant) {
             val_actual -= cant;
@@ -38,6 +41,8 @@ public class Recurso {
     }
 //Metodo recolectar recurso  
 
+    // Se hace la recoleccion del recurso, si la cantidad excede al valor maximo de recurso
+    // se iguala el recurso actual al valor amaximo
     public void recolectar(int cant) {
         if ((val_actual + cant) <= val_maximo) {
             val_actual += cant;
@@ -47,7 +52,7 @@ public class Recurso {
         }
 
     }
-//Get y set de los atributos 
+//Get y set 
 
     public String getNombre_recurso() {
         return nombre_recurso;

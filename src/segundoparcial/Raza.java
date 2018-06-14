@@ -13,20 +13,20 @@ import java.util.Scanner;
  * @author marielos
  */
 public class Raza {
-//Atributos de la clase
+    //Atributos de la clase
 
     private String nombre_raza;
     private CentroDeMando mando;
     //Lista que guarda los miembros y vehiculos
     private ArrayList<MiembroMilicia> miembros = new ArrayList();
     private ArrayList<Vehiculo> vehiculos = new ArrayList();
-//Contructor de la clase
+    //Contructor de la clase
 
     public Raza(String nombre_raza, String nombre_mando, int vida_centro_mando) {
         this.nombre_raza = nombre_raza;
         mando = new CentroDeMando(nombre_mando, vida_centro_mando);
     }
-//Metodo de mostrar informacion  
+    //Metodo de mostrar informacion  
     //Recorre la lista de miembro y vehiculos para mostrarlos como una lista en pantalla
     public void mostrarInformacion() {
         System.out.println(nombre_raza.toUpperCase());
@@ -42,14 +42,14 @@ public class Raza {
             vehiculos.get(i).mostrarInformacion();
         }
     }
-//Metodo de recibir dano
+    //Metodo de recibir daño
 
     public void recibirDano(int ataque) {
         int opcion; //Se usa opcion - 1 en el codigo ya qe al jugador se le muestra a partir de la opcion 1
                     //Pero las listas comienzan a partir de la 0, entonces se le resta 1
         Scanner leer = new Scanner(System.in);
         System.out.println("A que quieres atacar?");
-        // sin no hauy miembros o vehiculos el dano lo recibe
+        // sino hay miembros o vehiculos el dano lo recibe
         // directamente el centro de mando
         if (vehiculos.size() == 0 && miembros.size() == 0) {
             System.out.println("1) Centro de mando");
@@ -82,6 +82,7 @@ public class Raza {
                             miembros.remove(opcion - 1);
                         }
                     } else {
+                        //Si no exiten los miembros se muestra el mensaje
                         System.out.println("No hay miembros disponibles");
                     }
                     break;
@@ -95,29 +96,32 @@ public class Raza {
                         }
                         System.out.print("Digite opcion: ");
                         opcion = leer.nextInt();
+                        //Aqui se pregunta si el vehiculo del jugador contrario se quedo sin vida
+                        //de ser asi se remueve de al lista
                         vehiculos.get(opcion - 1).getVida().recibir_dano(ataque);
                         if (vehiculos.get(opcion - 1).getVida().vida_actual == 0) {
                             System.out.println("\t\t" + vehiculos.get(opcion - 1).getNombre_vehiculo() + " YA SE ARRUINO");
                             vehiculos.remove(opcion - 1);
                         }
                     } else {
+                        //Si no exiten los miembros se muestra el mensaje
                         System.out.println("No hay vehiculos disponibles");
                     }
                     break;
             }
         }
     }
-//Metodo de agregar miembro milicia
+    //Metodo de agregar miembro milicia
     public void agregarMiembroMilicia(MiembroMilicia miembro) {
         //El miembro se manda por medio de la clase "SegundoParcial"
         //En el menu de crear miembro
         this.miembros.add(miembro);
     }
-//Metodo de agregar vehiculo
+    //Metodo de agregar vehiculo
 
     public void agregarVehiculo(Vehiculo vehiculo) {
         //El vehiculo se manda por medio de la clase "SegundoParcial"
-        //En el menu de crear miembro
+        //En el menu de crear vehiculo
         this.vehiculos.add(vehiculo);
     }
     
@@ -131,7 +135,7 @@ public class Raza {
     public void asignar_recurso_c(String nombre_c, int valor) {
         mando.setRecurso_c(new Recurso(nombre_c, valor));
     }
-//Get y set
+    //Get y set
 
     public String getNombre_raza() {
         return nombre_raza;

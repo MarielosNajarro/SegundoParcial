@@ -10,7 +10,7 @@ package segundoparcial;
  * @author marielos
  */
 public class CentroDeMando {
-//Los atributos de la clase centro de mando
+    //Los atributos de la clase centro de mando
     //Recursos genericos
     private Recurso recurso_a;
     private Recurso recurso_b;
@@ -19,13 +19,13 @@ public class CentroDeMando {
     private int nivel = 0;
     private Vida vida;
 
-//Creando el contructor de la clase centro de mando
+    //Creando el contructor de la clase centro de mando
     public CentroDeMando(String nombre_centro, int vida_maxima) {
         this.nombre_centro = nombre_centro;
         vida = new Vida(vida_maxima, nombre_centro);
     }
 
-//Creando el metodo mostrar recursos del centro de mando
+    //Creando el metodo mostrar recursos del centro de mando
     public void mostrarRecursos() {
         System.out.println("Centro de mando: " + nombre_centro);
         System.out.println("\tNivel: " + nivel);
@@ -35,7 +35,7 @@ public class CentroDeMando {
         recurso_c.mostrarRecurso();
     }
 
-//Creando el metodo de subir de nivel
+    //Creando el metodo de subir de nivel
     public void subirDeNivel() {
         int gasto;
         if (nivel < 3) {
@@ -101,7 +101,7 @@ public class CentroDeMando {
             System.out.println("Error: Nivel maximo de " + nombre_centro + " alcanzado");
         }
     }
-//Get y set 
+    //Get y set 
 
     public Recurso getRecurso_a() {
         return recurso_a;

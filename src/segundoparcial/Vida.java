@@ -10,18 +10,18 @@ package segundoparcial;
  * @author MARIELOS
  */
 public class Vida {
-//Los atributos de la clase vida
+    //Los atributos de la clase vida
 
     public int vida_maxima;
     public int vida_actual;
     public String nombre_edificio;
-//Constructor de la clase
+    //Constructor de la clase
 
     public Vida(int vida_maxima, String nombre_edificio) {
         this.vida_actual = this.vida_maxima = vida_maxima;
         this.nombre_edificio = nombre_edificio;
     }
-//Metodo de recibir dano
+    //Metodo de recibir daño
 
     public int recibir_dano(int cant) {
         if (cant <= vida_actual) {
@@ -32,7 +32,7 @@ public class Vida {
         }
         return vida_actual;
     }
-//Get y set 
+    //Get y set 
 
     public int getActual() {
         return vida_actual;

@@ -10,24 +10,24 @@ package segundoparcial;
  * @author marielos
  */
 public class Recurso {
-//Atributos de la clase Recurso
+    //Atributos de la clase
 
     private String nombre_recurso;
     private int val_maximo;
     private int val_actual;
 
-//Constructor de la clase Recurso
+    //Constructor de la clase Recurso
     public Recurso(String nombre_recurso, int valor) {
         this.nombre_recurso = nombre_recurso;
         this.val_maximo = valor;
         this.val_actual = valor;
     }
-//Metodo de mostrar recurso 
+    //Metodo de mostrar recurso 
 
     public void mostrarRecurso() {
         System.out.println("\t\t" + nombre_recurso + ": " + val_actual + "/" + val_maximo);
     }
-//Metodo gastar recurso
+    //Metodo gastar recurso
     
     // Se hace el gasto del recurso, si la cantidad del gasto excede al valor actual
     // Se iguala el recurso actual 0
@@ -39,7 +39,7 @@ public class Recurso {
                     + " insuficiente");
         }
     }
-//Metodo recolectar recurso  
+    //Metodo recolectar recurso  
 
     // Se hace la recoleccion del recurso, si la cantidad excede al valor maximo de recurso
     // se iguala el recurso actual al valor amaximo
@@ -52,7 +52,7 @@ public class Recurso {
         }
 
     }
-//Get y set 
+    //Get y set 
 
     public String getNombre_recurso() {
         return nombre_recurso;

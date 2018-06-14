@@ -108,7 +108,7 @@ public class SegundoParcial {
                             }
 
                             break;
-                        case 2:
+                        case 2: //ATACAR CON VEHICULO
                             // verficando los vehiculos disponibles para atacar
                             if (jugador1.getVehiculos().size() > 0) {
                                 //mostrando vehiculos disponibles para atacar
@@ -119,6 +119,7 @@ public class SegundoParcial {
                                 }
                                 System.out.print("\nDigite opcion: ");
                                 opcion = leer.nextInt();
+                                //Luego de mostrar los vehiculos, el jugador recibe el daño
                                 jugador2.recibirDano(jugador1.getVehiculos().get(opcion - 1).getAtaque());
                             } else {
                                 System.out.println("No tienes vehiculos disponibles para atacar");
@@ -202,7 +203,7 @@ public class SegundoParcial {
                     }
                     break;
 
-                case 3:
+                case 3: //ATACAR
                     //Escogiendo con quien voy a atacar
                     System.out.println("1) Atacar con un Miembro");
                     System.out.println("2) Atacar con un Vehiculo");
@@ -237,6 +238,7 @@ public class SegundoParcial {
                                 }
                                 System.out.print("\nDigite opcion: ");
                                 opcion = leer.nextInt();
+                                //Luego de mostrar los vehiculos, el jugador recibe el daño
                                 jugador1.recibirDano(jugador2.getVehiculos().get(opcion - 1).getAtaque());
                             } else {
                                 System.out.println("No tienes vehiculos disponibles para atacar");
@@ -252,7 +254,7 @@ public class SegundoParcial {
                     System.out.print("\nDigite opcion: ");
                     opcion = leer.nextInt();
                     switch (opcion) {
-                        case 1:
+                        case 1: 
                             jugador2.getMando().getRecurso_a().recolectar(200);
                             break;
                         case 2:

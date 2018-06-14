@@ -86,6 +86,7 @@ public class Raza {
                     }
                     break;
                 case 2:
+                    //Si hay vehiculo entonces pregunta a cual quiere
                     if (vehiculos.size() > 0) {
                         System.out.println("A que vehiculo?");
                         for (int i = 0; i < vehiculos.size(); i++) {

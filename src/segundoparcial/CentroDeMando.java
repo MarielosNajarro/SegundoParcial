@@ -61,7 +61,7 @@ public class CentroDeMando {
                     break;
 
                 case 2:
-                    //Calculando el gasto de recursos al subir de nivel 1
+                    //Calculando el gasto de recursos al subir de nivel 2
                     gasto = (int) (0.25 * 1.30 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
                     //Verificando si hay recursos suficientes para subir de nivel
                     if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
@@ -79,7 +79,7 @@ public class CentroDeMando {
                     }
                     break;
                 case 3:
-                    //Calculando el gasto de recursos al subir de nivel 1
+                    //Calculando el gasto de recursos al subir de nivel 3
                     gasto = (int) (0.25 * 1.50 * (recurso_a.getVal_maximo() + recurso_b.getVal_maximo() + recurso_c.getVal_maximo()) / 3);
                     //Verificando si hay recursos suficientes para subir de nivel
                     if (recurso_a.getVal_actual() >= gasto && recurso_b.getVal_actual() >= gasto && recurso_c.getVal_actual() >= gasto) {
